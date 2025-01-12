@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #ffadad7c; /* Fundo branco */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    flex-direction: column; /* Garante que os elementos (carrossel, botão e texto) fiquem na coluna */
+}
+
+p{
+    text-align: left;
+    padding: 20px;
+    line-height: 30px;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Carrossel */
+.carrossel {
+    width: 80%;
+    
+    margin-bottom: 50px; /* Adiciona espaço abaixo do carrossel */
+    overflow: hidden; /* Oculta as imagens que saem do carrossel */
+    position: relative;
+    background-color: rgba(255, 182, 193, 0.6); /* Fundo rosa claro com transparência */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 20px; /* Adiciona espaçamento interno */
+}
+
+.slides {
+    display: flex; /* Organiza as imagens em linha */
+    transition: transform 1s ease-in-out; /* Suaviza a transição das imagens */
+}
+
+.slide {
+    min-width: 100%; /* Cada slide ocupa 100% da largura do carrossel */
+    display: flex;
+    justify-content: center; /* Centraliza a imagem */
+}
+
+.slide img {
+    width: 500px; /* Definindo a largura fixa para todas as imagens */
+    height: 200px; /* Definindo a altura fixa para todas as imagens */
+    object-fit: contain; /* Ajusta a imagem sem cortá-la, mantendo a proporção */
+}
+
+@keyframes slideAnimation {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-100%); }
+    50% { transform: translateX(-200%); }
+    75% { transform: translateX(-300%); }
+    100% { transform: translateX(-400%); }
+}
+
+.carrossel .slides {
+    animation: slideAnimation 15s ease-in-out infinite;
+}
+
+/* Botão em forma de coração */
+.heart-button {
+    display: inline-block;
+    font-size: 80px; /* Aumenta o tamanho do coração */
+    color: #FF0000; /* Cor vermelha intensa */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 20px; /* Ajuste o preenchimento para dar mais espaço */
+    transition: transform 0.3s ease, color 0.3s ease; /* Transição suave para o efeito de hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra suave para dar efeito de profundidade */
+    margin-top: 20px; /* Adiciona espaçamento superior */
+}
+
+/* Efeito de animação ao passar o mouse no coração */
+.heart-button:hover {
+    transform: scale(1.3); /* Aumenta ainda mais o tamanho quando o mouse passa por cima */
+    color: #FF4C4C; /* Um vermelho mais claro ao passar o mouse */
+}
+
+/* Texto oculto inicialmente */
+.hidden-text {
+    display: none;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Texto visível quando o botão é clicado */
+.hidden-text.show {
+    display: block;
+}
+
+/* Estilo para os corações flutuantes */
+.heart {
+    position: absolute;
+    font-size: 30px; /* Aumenta o tamanho dos corações */
+    color: red;
+    animation: heartAnimation 2s forwards;
+}
+
+/* Animação dos corações flutuando */
+@keyframes heartAnimation {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-50px) scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) scale(0.8);
+        opacity: 0;
+    }
+}
